@@ -1,4 +1,4 @@
-# Prestige Mod
+﻿# Prestige Mod
 
 This mod allows players to gain 'prestige levels' after hitting the servers level cap, which they can then use to gain additional stats. This both gives your players another way to increase their power for harder custom content, and provides incentive for older players to group with newer players in content they outgear.
 
@@ -18,7 +18,7 @@ Once players hit your servers level cap, they will continue to get exp from ques
 The maximum points that can be spent in a stat, as well as how much each point is worth, can be set in the config. Stats can also be disabled by setting the max to 0.
 
 ## Chat Commands
-**.prestige menu** --opens the main prestige menu for assignign and respeccing stats
+**.prestige menu** --opens the main prestige menu for assigning and respeccing stats
 
 **.prestige stats** --lists current prestige stats in the chatlog
 
