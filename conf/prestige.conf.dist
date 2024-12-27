@@ -1,0 +1,145 @@
+#
+# Copyright (C) 2016+ AzerothCore <www.azerothcore.org>, released under GNU AGPL v3 license: https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3
+#
+
+[worldserver]
+
+########################################
+# Prestige General Settings
+########################################
+#
+#    Prestige.Enable
+#        Description: Enable/Disable the prestige system.
+#        Default:     0 - Disabled
+#                     1 - Enabled
+#
+
+Prestige.Enable = 1
+
+#
+#    Prestige.ResetCost
+#        Description: The cost of resetting attributes in copper.
+#        Default:     0 (disabled)
+#
+
+Prestige.ResetCost = 0
+
+#
+#    Prestige.DisablePvP
+#        Description: Enable/Disable the attributes in PvP combat.
+#                     0 - Disabled
+#        Default:     1 - Enabled
+#
+
+Prestige.DisablePvP = 1
+
+
+
+########################################
+# Prestige Stat Weights And Max
+########################################
+#
+#    Prestige.Max.*
+#        Description: The max amount of points that can be spent
+#        Default:     100
+#        Disable:     0
+#
+#       Keep in mind that Prestige.Max * Prestige.StatPerPoint CANNOT be greater than 65,536.
+#           ex: if Prestige.Max.Stamina = 100 and Prestige.StatPerPoint.Stamina = 700, you will have errors due to overflow
+#
+Prestige.Max.Stamina = 100
+Prestige.Max.Strength = 100
+Prestige.Max.Agility = 100
+Prestige.Max.Intellect = 100
+Prestige.Max.Spirit = 100
+Prestige.Max.SpellPower = 100
+Prestige.Max.DefenseRating = 100
+Prestige.Max.DodgeRating = 100
+Prestige.Max.ParryRating = 100
+Prestige.Max.BlockRating = 100
+Prestige.Max.BlockValue = 100
+Prestige.Max.CritRating = 100
+Prestige.Max.HitRating = 100
+Prestige.Max.ExpertiseRating = 100
+Prestige.Max.HasteRating = 100
+Prestige.Max.ArmorPenRating = 100
+Prestige.Max.ResilRating = 100
+Prestige.Max.AttackPower = 100
+Prestige.Max.BonusArmor = 100
+Prestige.Max.SpellPen = 100
+Prestige.Max.Mp5 = 100
+Prestige.Max.ResistFire = 100
+Prestige.Max.ResistFrost = 100
+Prestige.Max.ResistNature = 100
+Prestige.Max.ResistShadow = 100
+Prestige.Max.ResistArcane = 100
+Prestige.Max.ResistAll = 100
+
+#
+#    Prestige.Max.*
+#        Description: The max amount of points that can be spent
+#        Default: varies
+#
+#       Keep in mind that Prestige.Max * Prestige.StatPerPoint CANNOT be greater than 65,536.
+#           ex: if Prestige.Max.Stamina = 100 and Prestige.StatPerPoint.Stamina = 700, you will have errors due to overflow
+#
+Prestige.StatPerPoint.Stamina = 5
+Prestige.StatPerPoint.Strength = 5
+Prestige.StatPerPoint.Agility = 5
+Prestige.StatPerPoint.Intellect = 5
+Prestige.StatPerPoint.Spirit = 5
+Prestige.StatPerPoint.SpellPower = 10
+Prestige.StatPerPoint.DefenseRating = 12
+Prestige.StatPerPoint.DodgeRating = 12
+Prestige.StatPerPoint.ParryRating = 12
+Prestige.StatPerPoint.BlockRating = 12
+Prestige.StatPerPoint.BlockValue = 5
+Prestige.StatPerPoint.CritRating = 12
+Prestige.StatPerPoint.HitRating = 12
+Prestige.StatPerPoint.ExpertiseRating = 12
+Prestige.StatPerPoint.HasteRating = 12
+Prestige.StatPerPoint.ArmorPenRating = 12
+Prestige.StatPerPoint.ResilRating = 12
+Prestige.StatPerPoint.AttackPower = 10
+Prestige.StatPerPoint.BonusArmor = 100
+Prestige.StatPerPoint.SpellPen = 12
+Prestige.StatPerPoint.Mp5 = 10
+Prestige.StatPerPoint.ResistFire = 10
+Prestige.StatPerPoint.ResistFrost = 10
+Prestige.StatPerPoint.ResistNature = 10
+Prestige.StatPerPoint.ResistShadow = 10
+Prestige.StatPerPoint.ResistArcane = 10
+Prestige.StatPerPoint.ResistAll = 5
+
+########################################
+# Prestige Level Exp Formula
+########################################
+#
+#    Prestige.LevelUpFormla.Type
+#        Description: Sets the type of formula used for exp calculations. Note option 2 is experimental.
+#               1 - Linear increase with rate. Total exp needed to level = base * (100+(prestigelvl*r)/100)
+#               2 - Exponential increase with rate. Total exp needed to level = base * (1 + ((prestigelvl*r)/100) * (pow(prestigelvl,2)/k))
+#        Default:     1
+#      
+Prestige.LevelUpFormula.Type = 1  
+
+#
+#    Prestige.LevelUpFormla.Base
+#        Description: Controls the base value in the exp formula.
+#        Default:     100000
+#  
+Prestige.LevelUpFormula.Base = 100000
+
+#
+#    Prestige.LevelUpFormla.r
+#        Description: Controls the (r) multiplier in the exp formla. Higher rate = more exp needed to level
+#        Default:     5
+#    
+Prestige.LevelUpFormula.r = 1
+
+#
+#    Prestige.LevelUpFormla.k
+#        Description: Controls the (k) multiplier in the exp formla. Higher value = more exp needed to level. Only used if LevelupFormula.Type = 2
+#        Default:     5
+#    
+Prestige.LevelUpFormula.k = 1
