@@ -670,20 +670,23 @@ void InitPrestigeExpTnl(Player* player)
         LOG_INFO("module", "Failed to get prestige stats for player '{}' with guid '{}'.", player->GetName(), player->GetGUID().GetRawValue());
         return;
     }
-  
+
+    //only alter stats if at max level
+  if (player->GetLevel() == prestigeConfigSettings.GetIntendedMaxLevel()){
   //   2 - Exponential increase with rate. Total exp needed to level = base * (1 + ((prestigelvl*r)/100) * (pow(prestigelvl,2)/k))
-    if(prestigeConfigSettings.GetLevelUpFormualType() == 2)
-    {
-        double newExpTNL = prestigeConfigSettings.GetLevelUpFormulaBase() * (1+(((prestigeStats->stats[PRESTIGE_STAT_PRESTIGELEVEL]+1)*prestigeConfigSettings.GetLevelUpFormulaR()/100))) *(pow(prestigeStats->stats[PRESTIGE_STAT_PRESTIGELEVEL],2)/prestigeConfigSettings.GetLevelUpFormulaK());
-        player->SetUInt32Value(PLAYER_NEXT_LEVEL_XP, static_cast<uint32>(newExpTNL));
-        return;
-    }
-    else
-    {
-        //    1 - Linear increase with rate. Total exp needed to level = base*(100+(prestigelvl*r)/100)
-        double newExpTNL = prestigeConfigSettings.GetLevelUpFormulaBase() * ((100.0 + ((prestigeStats->stats[PRESTIGE_STAT_PRESTIGELEVEL]+1)*prestigeConfigSettings.GetLevelUpFormulaR())) / 100.0);
-        player->SetUInt32Value(PLAYER_NEXT_LEVEL_XP, static_cast<uint32>(newExpTNL));
-    }
+        if(prestigeConfigSettings.GetLevelUpFormualType() == 2)
+        {
+            double newExpTNL = prestigeConfigSettings.GetLevelUpFormulaBase() * (1+(((prestigeStats->stats[PRESTIGE_STAT_PRESTIGELEVEL]+1)*prestigeConfigSettings.GetLevelUpFormulaR()/100))) *(pow(prestigeStats->stats[PRESTIGE_STAT_PRESTIGELEVEL],2)/prestigeConfigSettings.GetLevelUpFormulaK());
+            player->SetUInt32Value(PLAYER_NEXT_LEVEL_XP, static_cast<uint32>(newExpTNL));
+            return;
+        }
+       //    1 - Linear increase with rate. Total exp needed to level = base*(100+(prestigelvl*r)/100)
+        if(prestigeConfigSettings.GetLevelUpFormualType() == 1)
+        {
+            double newExpTNL = prestigeConfigSettings.GetLevelUpFormulaBase() * ((100.0 + ((prestigeStats->stats[PRESTIGE_STAT_PRESTIGELEVEL]+1)*prestigeConfigSettings.GetLevelUpFormulaR())) / 100.0);
+            player->SetUInt32Value(PLAYER_NEXT_LEVEL_XP, static_cast<uint32>(newExpTNL));
+        }
+      }
 }
 
 /*currently has no additional functionality. Included for future updates*/
