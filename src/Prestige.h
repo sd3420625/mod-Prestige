@@ -361,13 +361,13 @@ class PrestigePlayerScript : public PlayerScript
 public:
     PrestigePlayerScript() : PlayerScript("PrestigePlayerScript") { }
 
-    virtual void OnLogin(Player* /*player*/) override;
-    virtual void OnLogout(Player* /*player*/) override;
+    virtual void OnPlayerLogin(Player* /*player*/) override;
+    virtual void OnPlayerLogout(Player* /*player*/) override;
     virtual void OnPlayerLeaveCombat(Player* /*player*/) override;
-    virtual void OnGossipSelect(Player* player, uint32 menu_id, uint32 sender, uint32 action) override;
+    virtual void OnPlayerGossipSelect(Player* player, uint32 menu_id, uint32 sender, uint32 action) override;
     void HandlePrestigeStatAllocation(Player* /*player*/, uint32 /*attribute*/, bool /*reset*/);
     std::string GetPrestigeStatName(uint32 /*attribute*/);
-    virtual void OnLevelChanged(Player* /*player*/, uint8 /*oldLevel*/) override;
+    virtual void OnPlayerLevelChanged(Player* /*player*/, uint8 /*oldLevel*/) override;
     virtual void OnPlayerEnterCombat(Player* /*player*/, Unit* /*enemy*/) override;
 };
 
